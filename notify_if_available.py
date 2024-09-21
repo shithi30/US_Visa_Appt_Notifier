@@ -54,7 +54,7 @@ time.sleep(3)
 elems = driver.find_elements(By.LINK_TEXT, "Reschedule Appointment")
 elems[1].click()
 
-# accumulator
+# acc.
 date_df = pd.DataFrame(columns = ["consulate", "closest_date", "report_time"])
 consulates = ["Calgary", "Halifax", "Montreal", "Ottawa", "Quebec City", "Toronto", "Vancouver"]
 
