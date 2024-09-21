@@ -27,11 +27,11 @@ driver.get("https://ais.usvisa-info.com/en-ca/niv/users/sign_in")
 
 # user
 elem = driver.find_element(By.ID, "user_email")
-elem.send_keys(os.getenv(PORTAL_USER))
+elem.send_keys(os.getenv("PORTAL_USER"))
 
 # pass
 elem = driver.find_element(By.ID, "user_password")
-elem.send_keys(os.getenv(PORTAL_PASS))
+elem.send_keys(os.getenv("PORTAL_PASS"))
 
 # terms
 elem = driver.find_element(By.ID, "policy_confirmed")
@@ -93,6 +93,6 @@ html_msg["Subject"], html_msg["From"], html_msg["To"] = "US Visa Appt.", "Shithi
 
 # email - send
 with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-    server.login(sender_email, os.getenv(EMAIL_PASS))
+    server.login(sender_email, os.getenv("EMAIL_PASS"))
     # if date_df.shape[0] > 0: 
     server.sendmail(sender_email, receiver_email, html_msg.as_string())
