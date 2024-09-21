@@ -12,6 +12,10 @@ from email.mime.text import MIMEText
 from pretty_html_table import build_table
 import os
 
+# setup
+from pyvirtualdisplay import Display
+Display(visible = 0, size = (1920, 1080)).start()
+
 # window
 driver = webdriver.Chrome()
 driver.implicitly_wait(3)
