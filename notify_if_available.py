@@ -83,7 +83,8 @@ for consulate in consulates:
 
 # email - from, to, body
 sender_email = "shithi30@gmail.com"
-receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
+# receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
+receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com"]
 body = '''Please find the earliest posted empty slots by consulates.''' + build_table(date_df, "green_dark", font_size = "12px", text_align = "left") + '''<br>Thanks,<br>Shithi Maitra<br>Ex Asst. Manager, CS Analytics<br>Unilever BD Ltd.<br>'''
 
 # email - object
@@ -93,4 +94,5 @@ html_msg["Subject"], html_msg["From"], html_msg["To"] = "US Visa Appt.", "Shithi
 # email - send
 with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
     server.login(sender_email, os.get_env(EMAIL_PASS))
-    if date_df.shape[0] > 0: server.sendmail(sender_email, receiver_email, html_msg.as_string())
+    # if date_df.shape[0] > 0: 
+    server.sendmail(sender_email, receiver_email, html_msg.as_string())
