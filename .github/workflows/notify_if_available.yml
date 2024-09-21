@@ -1,0 +1,36 @@
+name: Notify if Available
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/7 * * * *"
+    
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checking out repo
+      uses: actions/checkout@v3
+      
+    - name: Setting up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11.7"
+        
+    - name: Removing previous Chrome
+      run: sudo apt purge google-chrome-stable  
+  
+    - name: Installing packages
+      run: pip install selenium beautifulsoup4 pandas pretty-html-table pyvirtualdisplay
+      
+    - name: Installing xvfb
+      run: sudo apt-get install xvfb
+
+    - name: Running Python script
+      env:  
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}  
+          PORTAL_USER: ${{ secrets.PORTAL_USER }}  
+          PORTAL_PASS: ${{ secrets.PORTAL_PASS }}  
+      run: python "notify_if_available.py"
+      
