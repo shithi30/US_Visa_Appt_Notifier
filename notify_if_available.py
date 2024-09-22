@@ -62,6 +62,7 @@ consulates = ["Calgary", "Halifax", "Montreal", "Ottawa", "Quebec City", "Toront
 for consulate in consulates: 
     elem = Select(driver.find_element(By.NAME, "appointments[consulate_appointment][facility_id]"))
     elem.select_by_visible_text(consulate)
+    time.sleep(2)
     
     # calendar
     elem = driver.find_element(By.NAME, "appointments[consulate_appointment][date]")
@@ -69,17 +70,24 @@ for consulate in consulates:
     except: continue
     
     # soup
-    while(1):
+    for i in range(0, 24):
         soup = BeautifulSoup(driver.page_source, "html.parser").find_all("td", attrs = {"data-handler": "selectDay"})
         # availability
-        if len(soup) > 0: break
+        available_on_month = len(soup)
+        if available_on_month > 0: break
         # next month
         elem = driver.find_element(By.XPATH, ".//a[@title='Next']")
         elem.click()
+
+    # exit calendar
+    elem = driver.find_element(By.ID, "appointments_consulate_address")
+    elem.click()
+    time.sleep(2)
     
     # record
-    closest_date = datetime.strptime(soup[0]["data-year"] + "-" + str(int(soup[0]["data-month"]) + 1) + "-" + soup[0].get_text(), "%Y-%m-%d").strftime("%Y-%m-%d")
-    if closest_date < "2027-12-08": date_df = pd.concat([date_df, pd.DataFrame([[consulate, closest_date, (datetime.now() - timedelta(hours = 4)).strftime("%Y-%m-%d %I:%M %p")]], columns = date_df.columns)], ignore_index = True)
+    if available_on_month > 0:
+        closest_date = datetime.strptime(soup[0]["data-year"] + "-" + str(int(soup[0]["data-month"]) + 1) + "-" + soup[0].get_text(), "%Y-%m-%d").strftime("%Y-%m-%d")
+        if closest_date < "2027-12-08": date_df = pd.concat([date_df, pd.DataFrame([[consulate, closest_date, (datetime.now() - timedelta(hours = 4)).strftime("%Y-%m-%d %I:%M %p")]], columns = date_df.columns)], ignore_index = True)
 
 # email - from, to, body
 sender_email = "shithi30@gmail.com"
