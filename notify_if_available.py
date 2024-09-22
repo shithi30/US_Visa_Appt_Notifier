@@ -85,10 +85,10 @@ for consulate in consulates:
     time.sleep(2)
     
     # record
-    if available_on_month > 0:
-        closest_date = datetime.strptime(soup[0]["data-year"] + "-" + str(int(soup[0]["data-month"]) + 1) + "-" + soup[0].get_text(), "%Y-%m-%d").strftime("%Y-%m-%d")
-        if closest_date < "2027-12-08": date_df = pd.concat([date_df, pd.DataFrame([[consulate, closest_date, (datetime.now() - timedelta(hours = 4)).strftime("%Y-%m-%d %I:%M %p")]], columns = date_df.columns)], ignore_index = True)
-
+    booked_date = closest_date = "2027-12-08"
+    if available_on_month > 0: closest_date = datetime.strptime(soup[0]["data-year"] + "-" + str(int(soup[0]["data-month"]) + 1) + "-" + soup[0].get_text(), "%Y-%m-%d").strftime("%Y-%m-%d")
+    if closest_date < booked_date: date_df = pd.concat([date_df, pd.DataFrame([[consulate, closest_date, (datetime.now() - timedelta(hours = 4)).strftime("%Y-%m-%d %I:%M %p")]], columns = date_df.columns)], ignore_index = True)
+    
 # email - from, to, body
 sender_email = "shithi30@gmail.com"
 # receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
