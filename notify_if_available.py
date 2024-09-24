@@ -91,7 +91,7 @@ for consulate in consulates:
     
 # email - from, to, body
 sender_email = "shithi30@gmail.com"
-receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
+receiver_email = ["shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
 body = '''Please find the earliest posted empty slots by consulates.''' + build_table(date_df, "green_dark", font_size = "12px", text_align = "left") + '''Thanks,<br>Shithi Maitra<br>Ex Asst. Manager, CS Analytics<br>Unilever BD Ltd.<br>'''
 
 # email - object
