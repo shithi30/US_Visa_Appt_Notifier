@@ -62,7 +62,7 @@ consulates = ["Calgary", "Halifax", "Montreal", "Ottawa", "Quebec City", "Toront
 for consulate in consulates: 
     elem = Select(driver.find_element(By.NAME, "appointments[consulate_appointment][facility_id]"))
     elem.select_by_visible_text(consulate)
-    time.sleep(2)
+    time.sleep(3)
     
     # calendar
     elem = driver.find_element(By.NAME, "appointments[consulate_appointment][date]")
@@ -82,17 +82,16 @@ for consulate in consulates:
     # exit calendar
     elem = driver.find_element(By.ID, "appointments_consulate_address")
     elem.click()
-    time.sleep(2)
+    time.sleep(3)
     
     # record
-    booked_date = closest_date = "2027-12-08"
+    booked_date = closest_date = "2025-12-08"
     if available_on_month > 0: closest_date = datetime.strptime(soup[0]["data-year"] + "-" + str(int(soup[0]["data-month"]) + 1) + "-" + soup[0].get_text(), "%Y-%m-%d").strftime("%Y-%m-%d")
     if closest_date < booked_date: date_df = pd.concat([date_df, pd.DataFrame([[consulate, closest_date, (datetime.now() - timedelta(hours = 4)).strftime("%Y-%m-%d %I:%M %p")]], columns = date_df.columns)], ignore_index = True)
     
 # email - from, to, body
 sender_email = "shithi30@gmail.com"
-# receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
-receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com"]
+receiver_email = ["maitra.shithi.aust.cse@gmail.com", "shithi30@outlook.com", "Purnabchowdhury@gmail.com"]
 body = '''Please find the earliest posted empty slots by consulates.''' + build_table(date_df, "green_dark", font_size = "12px", text_align = "left") + '''Thanks,<br>Shithi Maitra<br>Ex Asst. Manager, CS Analytics<br>Unilever BD Ltd.<br>'''
 
 # email - object
