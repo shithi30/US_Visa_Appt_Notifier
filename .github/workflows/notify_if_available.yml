@@ -3,7 +3,7 @@ name: Notify if Available
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 31 2 *" # never trigger
+    - cron: "*/6 * * * *"
     
 jobs:
   notify:
