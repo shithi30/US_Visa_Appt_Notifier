@@ -5,6 +5,6 @@ The script in this repository:
 **Tech Stack:** ```Selenium``` ```BeautifulSoup``` ```smtplib``` ```GitHub Actions (prototyping)```  ```Azure Functions (final deployment)``` <br>
 
 #### Instant Notifier
-<img width="300" alt="c5" src="https://github.com/user-attachments/assets/d13af16a-17f5-4cd4-baea-49ef9872c42b"><br>
+<img width="300" alt="c5" src="https://github.com/user-attachments/assets/99adcd3e-b6b4-4765-a6ea-664a657bb23d"><br>
 
 *<b>Note:</b> Scraper abides robots.txt guidelines. Notification useless if not promptly acted upon.*
