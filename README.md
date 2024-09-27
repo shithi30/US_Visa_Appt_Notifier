@@ -1,4 +1,4 @@
-The script in this repository (see [code](https://github.com/shithi30/Azure_Deployments) deployed) <b>:</b> 
+The script (see [code](https://github.com/shithi30/Azure_Deployments) deployed) in this repository:
   - Checks periodically for nearest appointment slots by 7 consulates
   - If available before the booked date, throws an email notification
 
