@@ -7,4 +7,4 @@ The script in this repository (see [code](https://github.com/shithi30/Azure_Depl
 #### Instant Notifier
 <img width="300" alt="c5" src="https://github.com/user-attachments/assets/99adcd3e-b6b4-4765-a6ea-664a657bb23d"><br>
 
-*<b>Note:</b> Scraper abides robots.txt guidelines. Notification useless if not promptly acted upon.*
+*<b>Note:</b> Scraper follows robots.txt guidelines. Notification useless if not promptly acted upon.*
