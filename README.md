@@ -7,4 +7,4 @@ The script in this repository:
 #### Instant Notifier
 <img width="300" alt="c5" src="https://github.com/user-attachments/assets/d13af16a-17f5-4cd4-baea-49ef9872c42b"><br>
 
-*Note: Scraper abides robots.txt. Notification useless if not promptly acted upon.*
+*<b>Note:</b> Scraper abides robots.txt. Notification useless if not promptly acted upon.*
